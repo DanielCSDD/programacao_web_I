@@ -1,0 +1,40 @@
+<div class="main jumbotron">
+    <h1>Lista de Hábitos</h1>
+    <p>Cadastre aqui os hábitos que você tem que vencer para melhorar sua vida!</p>
+</div>
+<div class="main jumbotron">
+    <table class="table table-striped">
+        <tbody>
+            <thead>
+                <th>Hábitos</th>
+                <th colspan="2">Ações</th>
+            </thead>
+            <!-- A diretiva ng-repeat implemetna um looping de repetição através do qual buscamos todos os
+            elementos do array $scope.habitos e exibimo-os na tabela HTML abaixo, ordenando-os pelo seu status
+            -->
+            <tr ng-repeat="item in habitos.data">
+                <td>{{item.nome}}</td>
+
+                <!-- Quando o usuário clica no botão vencer, é aconada a função $scope.vencerHabito-->
+                <td>
+                    <button type="button" class="btn btn-primary" ng-click="vencerHabito(item)">Vencer</button>
+                </td>
+
+                <td>
+                    <!-- Quando o usuário clica no botão Desistir, é aconada a função $scope.desistirHabito-->
+                    <button type="button" class="btn btn-danger" ng-click="desistirHabito(item)" ng-hide="item.status != 'A'">Desistir</button>
+
+                    <!-- Quando o usuário clica no botão Retomar, é aconada a função $scope.retomarHabito-->
+                    <button type="button" class="btn btn-danger" ng-click="retomarHabito(item)" ng-hide="item.status != 'V'">Retomar</button>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="main jumbotron">
+    <p>Mude sua vida!</p>
+    <p>Cadastre seus maus hábitos!</p>
+    <!-- Note o link Single page Application!! # -->
+    <a type="button" class="btn btn-primary" href="#/novohabito">Inserir novos hábitos</a>
+</div>
